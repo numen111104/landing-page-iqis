@@ -1,0 +1,41 @@
+name: Deploy Vue via FTP by Numen
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    
+    steps:
+    # 1. Ambil kodingan dari repo
+    - name: Get latest code
+      uses: actions/checkout@v4
+
+    # 2. Setup Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' 
+
+    # 3. Install & Build Project
+    - name: Install and Build
+      run: |
+        npm install
+        npm run build
+
+    # 4. Upload ke FTP aaPanel
+    - name: 📂 Sync files via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        # local-dir: Folder di GitHub yang mau diupload (hasil build Vue)
+        local-dir: ./dist/
+        server-dir: ./ 
+        protocol: ftp
+        dangerous-clean-slate: false

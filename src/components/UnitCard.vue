@@ -1,7 +1,5 @@
 <script setup>
 import { LinkIcon } from '@heroicons/vue/24/solid';
-import { CameraIcon } from '@heroicons/vue/24/outline'; // Fallback icon jika SVG IG terlalu panjang di code
-
 defineProps({
     unitName: String,
     source: String,
