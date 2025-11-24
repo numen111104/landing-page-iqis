@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-iqis-green: #026432;
+  --color-iqis-yellow: #fcdd33;
+  --color-iqis-green-dark: #014a25;
+  --color-iqis-yellow-dark: #e5c92e;
+
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-heading: Montserrat, ui-sans-serif, system-ui, sans-serif;
+
+  --background-image-hero-pattern: url('./assets/overlay.png');
+}
+
+body {
+    @apply bg-gray-50;
+}
